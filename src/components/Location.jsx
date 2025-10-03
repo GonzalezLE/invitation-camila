@@ -14,7 +14,7 @@ export default function Location() {
   // URL para confirmar asistencia (puede ser un link a un formulario de Google, WhatsApp, etc.)
   
     
-  const phoneNumber = "522213863050"; 
+  const phoneNumber = "5212213863050"; 
    const message = `¡Hola! Con mucha alegría confirmo nuestra asistencia para celebrar los XV Años de Camila. %0A%0AFamilia/Nombre:%0A%0AAsistiremos:%0A%0A¡Muchas gracias, nos vemos en la fiesta!`;
   const rsvpLink = `https://wa.me/${phoneNumber}?text=${message}`;
 

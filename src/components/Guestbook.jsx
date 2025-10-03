@@ -23,7 +23,7 @@ export default function Guestbook() {
 
   // --- CONFIGURACIÓN DE WHATSAPP ---
   // Reemplaza este número por el teléfono que recibirá los mensajes
-  const phoneNumber = "522222787979";
+  const phoneNumber = "5212213863050";
   
   // Plantilla del mensaje que se enviará
   const introText = "¡Hola! Quiero dejarle un deseo a Camila en su libro de visitas. ✨%0A%0A";
