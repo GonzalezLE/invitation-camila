@@ -1,0 +1,48 @@
+@import "tailwindcss";
+@import "yet-another-react-lightbox/styles.css"; 
+/* 🎨 Paleta de colores */
+@theme {
+  --color-peach: #D9A6A0;
+  --color-burgundy: #7C2834;
+  --color-cream: #FEFBF9;
+  --color-dark-gray: #403A3A;
+  --color-medium-gray: #736B6B;
+  --color-gold: #C9A977;
+
+  /* 🔤 Fuentes */
+  --font-sans: Montserrat, sans-serif;
+  --font-serif: Cinzel, serif;
+
+  /* 🎞️ Animaciones */
+  @keyframes fadeInUp {
+    0%   { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes kenburns {
+    0%   { transform: scale(1) translateY(0); transform-origin: center; }
+    100% { transform: scale(1.15) translateY(-15px); transform-origin: center; }
+  }
+
+  --animate-fade-in-up: fadeInUp 1.2s ease-out forwards;
+  --animate-kenburns: kenburns 20s ease-out infinite alternate-reverse both;
+}
+
+
+
+/* ======================================================= */
+/* == Personalización del Tema de la Galería (Lightbox) == */
+/* ======================================================= */
+:root {
+  /* Fondo del modal: Nuestro color 'cream' con 95% de opacidad */
+  --yarl__color_backdrop: rgba(254, 251, 249, 0.95);
+
+  /* Color de los iconos (flechas, cerrar): Nuestro color 'burgundy' */
+  --yarl__color_button: #7C2834;
+
+  /* Color de los iconos al pasar el cursor: Nuestro color 'gold' */
+  --yarl__color_button_hover: #C9A977;
+
+  /* Fondo de los iconos al pasar el cursor: Nuestro 'peach' transparente */
+  --yarl__color_button_active: rgba(217, 166, 160, 0.2);
+}
