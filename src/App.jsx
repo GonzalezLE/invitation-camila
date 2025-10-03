@@ -1,6 +1,10 @@
+import { useEffect, useState, useRef } from 'react'; // <-- AÑADIMOS useRef
 import { useCallback } from 'react';
 import Particles from 'react-tsparticles';
 import { loadSlim } from 'tsparticles-slim'; // Usaremos esta función para la carga
+
+
+import MusicPlayer from './components/MusicPlayer';
 
 // Importamos el resto de nuestros componentes y la configuración
 import { particlesConfig } from './particlesConfig';
@@ -16,6 +20,41 @@ import SectionWrapper from './components/SectionWrapper';
 import Guestbook from './components/Guestbook';
 
 function App() {
+
+  const [init, setInit] = useState(false);
+  const audioRef = useRef(null); // Referencia al elemento <audio>
+  const [isPlaying, setIsPlaying] = useState(false); // Estado para saber si la música suena
+
+  // Lógica para el autoplay y el primer clic
+  useEffect(() => {
+    const playAudio = async () => {
+      try {
+        await audioRef.current.play();
+        setIsPlaying(true);
+      } catch (error) {
+        console.log("El autoplay fue bloqueado por el navegador.");
+        // Si el autoplay falla, esperamos el primer clic del usuario
+        const handleFirstClick = () => {
+          playAudio();
+          window.removeEventListener('click', handleFirstClick);
+        };
+        window.addEventListener('click', handleFirstClick);
+      }
+    };
+    playAudio();
+  }, []);
+
+   // Función para pausar/reanudar la música con el botón
+  const togglePlayPause = () => {
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
+
+
   // Esta es la función que se encargará de inicializar el motor de partículas
   const particlesInit = useCallback(async (engine) => {
     // Aquí le decimos que cargue la versión "slim" (ligera) de las partículas
@@ -24,6 +63,11 @@ function App() {
 
   return (
     <div>
+           {/* Elemento de audio (no visible) */}
+      <audio ref={audioRef} src="./audio/cancion.mp3" loop />
+      
+      {/* Botón flotante para controlar la música */}
+      <MusicPlayer isPlaying={isPlaying} togglePlayPause={togglePlayPause} />
       <main>
         <Welcome />
 
@@ -39,7 +83,7 @@ function App() {
           <Message />
           <Family />
           <Gallery />
-          <DressCode/>
+          <DressCode />
           <Itinerary />
           <Location />
           <GiftRegistry />
