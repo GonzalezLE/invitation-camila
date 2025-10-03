@@ -32,9 +32,7 @@ export default function Guestbook() {
   const messageText = `*Mensaje:*%0A${encodeURIComponent(message)}`;
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${introText}${fromText}${messageText}`;
 
-
-   // --- Variantes de animación para el muro de deseos ---
-  const wallVariants = {
+const wallVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
   };
@@ -44,8 +42,7 @@ export default function Guestbook() {
     visible: { opacity: 1, x: 0, transition: { duration: 0.6 } },
   };
 
-
-return (
+  return (
     <SectionWrapper id="guestbook">
       <motion.div 
         className="container mx-auto px-6 max-w-4xl text-center text-dark-gray"
@@ -63,8 +60,40 @@ return (
           Significa mucho para mí que dejes un recuerdo de este día. Por favor, compárteme tus mejores deseos para esta nueva etapa.
         </p>
 
+        {/* --- Formulario para enviar deseos por WhatsApp --- */}
         <div className="max-w-xl mx-auto mt-12 text-left">
-          {/* ... (el contenido del formulario no necesita cambios) ... */}
+          <div className="mb-4">
+            <label htmlFor="name" className="block text-burgundy font-sans mb-2">Tu Nombre:</label>
+            <input 
+              type="text" 
+              id="name" 
+              name="name" 
+              required 
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-full p-3 font-sans rounded-md border border-peach/50 focus:ring-2 focus:ring-gold focus:outline-none bg-white/70" 
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="message" className="block text-burgundy font-sans mb-2">Tu Mensaje:</label>
+            <textarea 
+              id="message" 
+              name="message" 
+              rows="4" 
+              required
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              className="w-full p-3 font-sans rounded-md border border-peach/50 focus:ring-2 focus:ring-gold focus:outline-none bg-white/70"
+            ></textarea>
+          </div>
+          <a 
+            href={!name || !message ? undefined : whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`block w-full text-center bg-burgundy text-cream font-bold font-sans py-3 px-8 rounded-lg shadow-md transition-all duration-300 ease-in-out ${!name || !message ? 'opacity-50 cursor-not-allowed' : 'hover:scale-105 hover:bg-gold hover:text-dark-gray'}`}
+          >
+            Enviar mi Deseo por WhatsApp
+          </a>
         </div>
 
         {/* --- Muro de Deseos Mostrados (ahora con animación) --- */}
