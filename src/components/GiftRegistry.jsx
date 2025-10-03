@@ -1,21 +1,24 @@
 import SectionWrapper from './SectionWrapper';
 import GiftIcon from '../assets/icons/GiftIcon';
 import DecorativeSeparator from '../assets/DecorativeSeparator';
-
+import { motion } from 'framer-motion';
 
 export default function GiftRegistry() {
-  // --- PERSONALIZA LA MESA DE REGALOS AQUÍ ---
   const mainMessage = "Tu presencia es mi más grande regalo. Si además deseas obsequiarme un detalle, he creado una mesa de regalos para tu comodidad.";
-  
-  // El nombre de la tienda para mostrar en el botón
   const storeName = "Liverpool"; 
-  
-  // ¡IMPORTANTE! Pega aquí el enlace a tu mesa de regalos
-  const registryUrl = "#"; // Ejemplo: "https://www.liverpool.com.mx/tienda/giftregistry/shared/..."
+  const registryUrl = "#"; 
 
   return (
     <SectionWrapper id="gift-registry">
-      <div className="container mx-auto px-6 max-w-3xl text-center text-dark-gray">
+      {/* 1. Envolvemos el contenido en un motion.div */}
+      <motion.div 
+        className="container mx-auto px-6 max-w-3xl text-center text-dark-gray"
+        // 2. Añadimos las propiedades de animación
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
         <DecorativeSeparator className="h-auto w-48 mx-auto mb-10 text-gold" />
         <GiftIcon className="w-16 h-16 mx-auto text-gold" />
 
@@ -27,7 +30,6 @@ export default function GiftRegistry() {
           {mainMessage}
         </p>
         
-        {/* --- Botón para enlazar a la Mesa de Regalos --- */}
         <div className="mt-10">
           <a
             href={registryUrl}
@@ -38,7 +40,7 @@ export default function GiftRegistry() {
             Ver Mesa de Regalos en {storeName}
           </a>
         </div>
-      </div>
+      </motion.div>
     </SectionWrapper>
   );
 }

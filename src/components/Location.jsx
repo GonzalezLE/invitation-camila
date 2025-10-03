@@ -1,6 +1,8 @@
 import SectionWrapper from './SectionWrapper';
 import LocationIcon from '../assets/icons/LocationIcon';
 import DecorativeSeparator from '../assets/DecorativeSeparator';
+import { motion } from 'framer-motion';
+
 
 export default function Location() {
   // --- PERSONALIZA LA INFORMACIÓN DEL SALÓN AQUÍ ---
@@ -19,18 +21,43 @@ export default function Location() {
   const rsvpLink = `https://wa.me/${phoneNumber}?text=${message}`;
 
 
+   // --- Variantes de Animación ---
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
+  };
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
+  const itemLeftVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" } },
+  };
+  const itemRightVariants = {
+    hidden: { opacity: 0, x: 50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" } },
+  };
+
   return (
     <SectionWrapper id="location">
-      <div className="container mx-auto px-6 max-w-4xl text-center text-dark-gray">
-        
-        <DecorativeSeparator className="h-auto w-48 mx-auto mb-10 text-gold" />
-        <h2 className="font-serif text-3xl md:text-4xl text-burgundy mb-12">
-          Lugar de la Recepción
-        </h2>
+      <motion.div 
+        className="container mx-auto px-6 max-w-4xl text-center text-dark-gray"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+      >
+        <motion.div variants={itemVariants}>
+          <DecorativeSeparator className="h-auto w-48 mx-auto mb-10 text-gold" />
+          <h2 className="font-serif text-3xl md:text-4xl text-burgundy mb-12">
+            Lugar de la Recepción
+          </h2>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           {/* Columna de Información */}
-          <div className="text-center md:text-left">
+          <motion.div variants={itemLeftVariants} className="text-center md:text-left">
             <img 
               src={salonImageUrl} 
               alt={`Foto del ${salonName}`}
@@ -41,10 +68,10 @@ export default function Location() {
               <h3 className="font-serif text-2xl text-burgundy">{salonName}</h3>
             </div>
             <p className="font-sans mt-2 ml-11">{address}</p>
-          </div>
+          </motion.div>
 
           {/* Columna del Mapa */}
-          <div className="w-full h-96 md:h-full rounded-lg overflow-hidden shadow-xl border-4 border-peach">
+          <motion.div variants={itemRightVariants} className="w-full h-96 md:h-full rounded-lg overflow-hidden shadow-xl border-4 border-peach">
             <iframe
               src={googleMapsUrl}
               width="100%"
@@ -54,11 +81,11 @@ export default function Location() {
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
-          </div>
+          </motion.div>
         </div>
         
         {/* Botón de Confirmación de Asistencia */}
-        <div className="mt-16">
+        <motion.div variants={itemVariants} className="mt-16">
           <h3 className="font-serif text-2xl text-burgundy mb-4">Confirma tu Asistencia</h3>
           <p className="font-sans max-w-md mx-auto mb-6">Por favor, ayúdame a saber si contaré contigo en esta noche tan especial. ¡Espero verte ahí!</p>
           <a
@@ -69,8 +96,8 @@ export default function Location() {
           >
             Confirmar Asistencia
           </a>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </SectionWrapper>
   );
 }

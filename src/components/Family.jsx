@@ -1,4 +1,8 @@
+import { motion } from 'framer-motion';
 import SectionWrapper from './SectionWrapper';
+import DecorativeSeparator from '../assets/DecorativeSeparator';
+
+
 
 export default function Family() {
     /**
@@ -35,53 +39,89 @@ export default function Family() {
 
 
 
-    // Filtramos el arreglo para separar padres de hermanos
     const parents = familyMembers.filter(member => member.role === 'Padre' || member.role === 'Madre');
-    const siblings = familyMembers.filter(member => member.role === 'Hermano' || member.role === 'Hermana');
+  const siblings = familyMembers.filter(member => member.role === 'Hermano' || member.role === 'Hermana');
 
-    // Componente reutilizable para mostrar cada miembro
-    const MemberCard = ({ name, imageUrl, role }) => (
-        <div className="text-center flex flex-col items-center">
-            <img
-                src={imageUrl}
-                alt={`Foto de ${name}`}
-                className="w-36 h-36 md:w-40 md:h-40 object-cover rounded-full mx-auto shadow-lg border-4 border-peach"
-            />
-            <p className="font-serif text-xl mt-4">{name}</p>
-            <p className="font-sans text-sm text-gold tracking-widest">{role}</p>
-        </div>
-    );
+  // --- Definimos las variantes para las animaciones ---
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3, // Cada tarjeta aparecerá con 0.3s de diferencia
+      },
+    },
+  };
 
-    return (
-        <SectionWrapper id="family" className="text-dark-gray py-20 md:py-28">
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20, scale: 0.95 },
+    visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5 } },
+  };
 
-            <div className="container mx-auto px-6 max-w-4xl text-center">
+  const MemberCard = ({ name, imageUrl, role }) => (
+    <div className="text-center flex flex-col items-center">
+      <img
+        src={imageUrl}
+        alt={`Foto de ${name}`}
+        className="w-36 h-36 md:w-40 md:h-40 object-cover rounded-full mx-auto shadow-lg border-4 border-peach"
+      />
+      <p className="font-serif text-xl mt-4">{name}</p>
+      <p className="font-sans text-sm text-gold tracking-widest">{role}</p>
+    </div>
+  );
 
-                <h2 className="font-serif text-3xl md:text-4xl text-burgundy mb-16">
-                    Con la bendición de mis Padres
-                </h2>
+  return (
+    <SectionWrapper id="family">
+      <div className="container mx-auto px-6 max-w-4xl text-center text-dark-gray">
+        <h2 className="font-serif text-3xl md:text-4xl text-burgundy mb-16">
+          Con la bendición de mis Padres
+        </h2>
 
-                {/* --- SECCIÓN DE PADRES --- */}
-                <div className="flex flex-col md:flex-row justify-center items-center gap-12 md:gap-16 mb-16">
-                    {parents.map((member) => (
-                        <MemberCard key={member.name} {...member} />
-                    ))}
-                </div>
+        {/* --- SECCIÓN DE PADRES (AHORA ANIMADA) --- */}
+        <motion.div 
+          className="flex flex-col md:flex-row justify-center items-center gap-12 md:gap-16 mb-16"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          {parents.map((member) => (
+            <motion.div key={member.name} variants={itemVariants}>
+              <MemberCard {...member} />
+            </motion.div>
+          ))}
+        </motion.div>
 
-                {/* --- SECCIÓN DE HERMANOS (Solo aparece si hay hermanos) --- */}
-                {siblings.length > 0 && (
-                    <div>
-                        <h3 className="font-serif text-2xl text-burgundy mb-12 pt-8 border-t border-peach/50">
-                            Y la compañía de mis Hermanos
-                        </h3>
-                        <div className="flex flex-wrap justify-center items-start gap-12 md:gap-16">
-                            {siblings.map((member) => (
-                                <MemberCard key={member.name} {...member} />
-                            ))}
-                        </div>
-                    </div>
-                )}
-            </div>
-        </SectionWrapper>
-    );
+        {/* --- SECCIÓN DE HERMANOS (AHORA ANIMADA) --- */}
+        {siblings.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            {/* Reemplazamos la línea simple por el separador decorativo */}
+            <DecorativeSeparator className="h-auto w-48 mx-auto mb-10 text-peach/70" />
+
+            <h3 className="font-serif text-2xl text-burgundy mb-12">
+              Y la compañía de mis Hermanos
+            </h3>
+
+            <motion.div 
+              className="flex flex-wrap justify-center items-start gap-12 md:gap-16"
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              {siblings.map((member) => (
+                <motion.div key={member.name} variants={itemVariants}>
+                  <MemberCard {...member} />
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+        )}
+      </div>
+    </SectionWrapper>
+  );
 }

@@ -63,7 +63,7 @@ export const particlesConfig = {
       // NUEVO: Animación de Tamaño (efecto de pulso)
       animation: {
         enable: true,
-        speed: 8,
+        speed: 1.5,
         startValue: 'random',
         destroy: 'none',
         sync: false,
@@ -81,7 +81,7 @@ export const particlesConfig = {
       },
       animation: {
         enable: true,
-        speed: 8,
+        speed: 1,
         sync: false,
       },
       direction: 'random',

@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import SectionWrapper from './SectionWrapper';
 import DressCodeIcon from '../assets/icons/DressCodeIcon';
 
@@ -7,7 +8,15 @@ export default function DressCode() {
   
   return (
     <SectionWrapper id="dresscode">
-      <div className="container mx-auto px-6 max-w-2xl text-center text-dark-gray">
+      {/* 1. Envolvemos el contenido principal en un motion.div */}
+      <motion.div 
+        className="container mx-auto px-6 max-w-2xl text-center text-dark-gray"
+        // 2. Añadimos las propiedades de animación
+        initial={{ opacity: 0, scale: 0.9 }} // Inicia transparente y un 10% más pequeño
+        whileInView={{ opacity: 1, scale: 1 }}  // Anima a opacidad total y tamaño normal
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+      >
         
         <DressCodeIcon className="w-16 h-16 mx-auto text-gold" />
 
@@ -23,7 +32,6 @@ export default function DressCode() {
           {description}
         </p>
         
-        {/* --- NUEVO: Nota sobre el color reservado --- */}
         <div className="mt-8 flex items-center justify-center gap-4 bg-peach/10 p-4 rounded-lg border border-peach/50 max-w-md mx-auto">
           <span className="w-6 h-6 rounded-full bg-peach border-2 border-white shadow-md block flex-shrink-0"></span>
           <p className="font-sans text-sm text-dark-gray text-left">
@@ -31,7 +39,7 @@ export default function DressCode() {
           </p>
         </div>
         
-      </div>
+      </motion.div>
     </SectionWrapper>
   );
 }
