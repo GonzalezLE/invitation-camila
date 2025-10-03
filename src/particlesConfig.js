@@ -1,5 +1,3 @@
-// Ruta: src/particlesConfig.js
-
 export const particlesConfig = {
   background: {
     color: {
@@ -22,9 +20,8 @@ export const particlesConfig = {
     },
   },
   particles: {
-    // CAMBIO AQUÍ: Usamos los colores de tu paleta
     color: {
-      value: ['#D9A6A0', '#7C2834', '#C9A977'], // Los colores de tu paleta: Peach, Burgundy, Gold
+      value: ['#D9A6A0', '#7C2834', '#C9A977'],
     },
     links: {
       enable: false,
@@ -36,7 +33,7 @@ export const particlesConfig = {
         default: 'out',
       },
       random: true,
-      speed: 0.3,
+      speed: 1.2, // MÁS VELOCIDAD: Aumentamos de 0.3 a 1.2
       straight: false,
     },
     number: {
@@ -62,7 +59,32 @@ export const particlesConfig = {
       },
     },
     size: {
-      value: { min: 1, max:5 },
+      value: { min: 1, max: 4 }, // Aumentamos el tamaño máximo un poco
+      // NUEVO: Animación de Tamaño (efecto de pulso)
+      animation: {
+        enable: true,
+        speed: 8,
+        startValue: 'random',
+        destroy: 'none',
+        sync: false,
+      },
+    },
+    // NUEVO: Animación de Rotación
+    rotate: {
+      random: {
+        enable: true,
+        minimumValue: 0,
+      },
+      value: {
+        min: 0,
+        max: 360,
+      },
+      animation: {
+        enable: true,
+        speed: 8,
+        sync: false,
+      },
+      direction: 'random',
     },
   },
   detectRetina: true,
