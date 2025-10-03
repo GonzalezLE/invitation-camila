@@ -1,16 +1,17 @@
-// Configuración para un efecto de partículas "aesthetic"
+// Ruta: src/particlesConfig.js
+
 export const particlesConfig = {
   background: {
     color: {
-      value: 'transparent', // Fondo transparente para que se vea el contenido
+      value: 'transparent',
     },
   },
   fpsLimit: 120,
   interactivity: {
     events: {
       onHover: {
-        enable: true,
-        mode: 'repulse', // Las partículas se alejan del cursor
+        enable: false,
+        mode: 'repulse',
       },
     },
     modes: {
@@ -21,30 +22,31 @@ export const particlesConfig = {
     },
   },
   particles: {
+    // CAMBIO AQUÍ: Usamos los colores de tu paleta
     color: {
-      value: ['#D9A6A0', '#7C2834', '#C9A977'], // ¡Nuestros colores! Peach, Burgundy, Gold
+      value: ['#D9A6A0', '#7C2834', '#C9A977'], // Los colores de tu paleta: Peach, Burgundy, Gold
     },
     links: {
-      enable: false, // No queremos líneas entre las partículas
+      enable: false,
     },
     move: {
-      direction: 'top', // Se mueven hacia arriba
+      direction: 'top',
       enable: true,
       outModes: {
         default: 'out',
       },
       random: true,
-      speed: 0.5, // Velocidad lenta y sutil
+      speed: 0.3,
       straight: false,
     },
     number: {
       density: {
         enable: true,
       },
-      value: 40, // Cantidad de partículas, no demasiadas
+      value: 60,
     },
     opacity: {
-      value: { min: 0.3, max: 0.7 }, // Opacidad aleatoria
+      value: { min: 0.1, max: 0.6 },
       animation: {
         enable: true,
         speed: 1,
@@ -52,10 +54,15 @@ export const particlesConfig = {
       },
     },
     shape: {
-      type: 'circle',
+      type: 'star',
+      options: {
+        star: {
+          sides: 5,
+        },
+      },
     },
     size: {
-      value: { min: 1, max: 4 }, // Tamaño aleatorio
+      value: { min: 1, max:5 },
     },
   },
   detectRetina: true,

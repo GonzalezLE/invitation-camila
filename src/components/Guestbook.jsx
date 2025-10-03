@@ -26,7 +26,7 @@ export default function Guestbook() {
   const phoneNumber = "5212213863050";
   
   // Plantilla del mensaje que se enviará
-  const introText = "¡Hola! Quiero dejarle un deseo a Camila en su libro de visitas. ✨%0A%0A";
+  const introText = "¡Hola! Quiero dejarle un deseo a Camila en su libro de deseos. ✨%0A%0A";
   const fromText = `*De:* ${encodeURIComponent(name)}%0A%0A`;
   const messageText = `*Mensaje:*%0A${encodeURIComponent(message)}`;
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${introText}${fromText}${messageText}`;
