@@ -15,14 +15,15 @@ export default function Family() {
             role: 'Padre',
             name: 'Sr. Victor Mendieta López',
             // Cambia esta URL por la foto real del padre
-            imageUrl: 'https://images.pexels.com/photos/532220/pexels-photo-532220.jpeg?auto=compress&cs=tinysrgb&w=600'
+            imageUrl: './public/fotos/papas.jpeg'
         },
         {
             role: 'Madre',
             name: 'Sra. Margarita López Salinas',
             // Cambia esta URL por la foto real de la madre
-            imageUrl: 'https://images.pexels.com/photos/774095/pexels-photo-774095.jpeg?auto=compress&cs=tinysrgb&w=600'
+            imageUrl: './public/fotos/papas.jpeg'
         },
+        /*
         {
             role: 'Hermana',
             name: 'Nombre',
@@ -34,7 +35,7 @@ export default function Family() {
             name: 'Nombre',
             // Cambia esta URL por la foto real del hermano
             imageUrl: 'https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=600'
-        }
+        }*/
     ];
 
 
