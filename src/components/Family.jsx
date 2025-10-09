@@ -15,13 +15,13 @@ export default function Family() {
             role: 'Padre',
             name: 'Sr. Victor Mendieta López',
             // Cambia esta URL por la foto real del padre
-            imageUrl: './public/fotos/papas.jpeg'
+            imageUrl: './fotos/papas.jpeg'
         },
         {
             role: 'Madre',
             name: 'Sra. Margarita López Salinas',
             // Cambia esta URL por la foto real de la madre
-            imageUrl: './public/fotos/papas.jpeg'
+            imageUrl: './fotos/papas.jpeg'
         },
         /*
         {
