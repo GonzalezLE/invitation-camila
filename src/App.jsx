@@ -86,7 +86,7 @@ function App() {
           <DressCode />
           <Itinerary />
           <Location />
-          <GiftRegistry />
+          {/* <GiftRegistry /> */}
 
 
           <Guestbook />
