@@ -35,7 +35,7 @@ export default function DressCode() {
         <div className="mt-8 flex items-center justify-center gap-4 bg-peach/10 p-4 rounded-lg border border-peach/50 max-w-md mx-auto">
           <span className="w-6 h-6 rounded-full bg-peach border-2 border-white shadow-md block flex-shrink-0"></span>
           <p className="font-sans text-sm text-dark-gray text-left">
-            P.D. El color <span className="font-semibold text-burgundy">Rosa / Durazno</span> está reservado para la quinceañera.
+            P.D. El color <span className="font-semibold text-burgundy">Palo de rosa</span> está reservado para la quinceañera.
           </p>
         </div>
         

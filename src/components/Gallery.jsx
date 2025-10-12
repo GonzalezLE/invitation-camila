@@ -6,16 +6,17 @@ import { motion } from 'framer-motion';
 export default function Gallery() {
   // --- AÑADE O CAMBIA LAS FOTOS DE LA QUINCEAÑERA AQUÍ ---
   const photos = [
-    { src: './galeria/galeria_1.jpeg' },
-    { src: './galeria/galeria_2.jpeg' },
-    { src: './galeria/galeria_3.jpeg' },
-    { src: './galeria/galeria_4.jpg' },
-    { src: './galeria/galeria_5.jpeg' },
-    { src: './galeria/galeria_6.jpg' },
-    { src: './galeria/galeria_7.jpeg' },
-    // { src: './galeria/galeria_8.jpeg' },
-    { src: './galeria/galeria_9.png' },
-    { src: './galeria/galeria_10.png' },
+    { src: './galeria/g1.jpeg' },
+    { src: './galeria/g2.jpeg' },
+    { src: './galeria/g3.jpeg' },
+    { src: './galeria/g4.jpeg' },
+    { src: './galeria/g5.jpeg' },
+    { src: './galeria/g6.jpeg' },
+    { src: './galeria/g7.jpeg' },
+    { src: './galeria/g8.jpeg' },
+    { src: './galeria/g9.jpeg' },
+    { src: './galeria/g10.jpeg' },
+    { src: './galeria/g11.jpeg' }
   ];
 
   const [index, setIndex] = useState(-1);

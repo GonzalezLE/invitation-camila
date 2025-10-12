@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 export default function Location() {
   // --- PERSONALIZA LA INFORMACIÓN DEL SALÓN AQUÍ ---
   const salonName = "Salón castillo real Dumont";
-  const address = "Av. 16 Ote. 4005, Resurgimiento Cd. Nte, 72330 Heroica Puebla de Zaragoza, Pue";
+  const address = "Av. 16 Ote. 4005, Resurgimiento Cd. Nte, 72330 Heroica Puebla de Zaragoza. Pue.";
 
   // URL de una foto del salón
   const salonImageUrl = "./fotos/salon.jpeg";
